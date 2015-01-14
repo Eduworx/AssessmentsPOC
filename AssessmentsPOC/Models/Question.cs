@@ -21,8 +21,10 @@ namespace AssessmentsPOC.Models
 
         public double Grade { get; set; }
 
-        [Key, ForeignKey("Assessment")]
+        [ForeignKey("Assessment")]
         public int AssessmentId { get; set; }
+        public virtual Assessment Assessment { get; set; }
+
 
         public virtual List<Option> Options { get; set; }
     }

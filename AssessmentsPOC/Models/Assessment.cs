@@ -22,8 +22,10 @@ namespace AssessmentsPOC.Models
 
         public double Grade { get; set; }
 
-        [Key, ForeignKey("Session")]
+        [ForeignKey("Session")]
         public int SessionId { get; set; }
+
+        public virtual Session Session { get; set; }
 
         public virtual List<Question> Questions { get; set; }
     }
