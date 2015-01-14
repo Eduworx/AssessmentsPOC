@@ -13,44 +13,44 @@ using AssessmentsPOC.Models;
 
 namespace AssessmentsPOC.Controllers
 {
-    public class SessionsController : ApiController
+    public class ContextsController : ApiController
     {
         private AssessmentsContext db = new AssessmentsContext();
 
-        // GET: api/Sessions
-        public IQueryable<Session> GetSessions()
+        // GET: api/Contexts
+        public IQueryable<Context> GetContexts()
         {
-            return db.Sessions;
+            return db.Contexts;
         }
 
-        // GET: api/Sessions/5
-        [ResponseType(typeof(Session))]
-        public async Task<IHttpActionResult> GetSession(int id)
+        // GET: api/Contexts/5
+        [ResponseType(typeof(Context))]
+        public async Task<IHttpActionResult> GetContext(int id)
         {
-            Session session = await db.Sessions.FindAsync(id);
-            if (session == null)
+            Context context = await db.Contexts.FindAsync(id);
+            if (context == null)
             {
                 return NotFound();
             }
 
-            return Ok(session);
+            return Ok(context);
         }
 
-        // PUT: api/Sessions/5
+        // PUT: api/Contexts/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutSession(int id, Session session)
+        public async Task<IHttpActionResult> PutContext(int id, Context context)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != session.Id)
+            if (id != context.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(session).State = EntityState.Modified;
+            db.Entry(context).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +58,7 @@ namespace AssessmentsPOC.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!SessionExists(id))
+                if (!ContextExists(id))
                 {
                     return NotFound();
                 }
@@ -71,35 +71,35 @@ namespace AssessmentsPOC.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Sessions
-        [ResponseType(typeof(Session))]
-        public async Task<IHttpActionResult> PostSession(Session session)
+        // POST: api/Contexts
+        [ResponseType(typeof(Context))]
+        public async Task<IHttpActionResult> PostContext(Context context)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Sessions.Add(session);
+            db.Contexts.Add(context);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = session.Id }, session);
+            return CreatedAtRoute("DefaultApi", new { id = context.Id }, context);
         }
 
-        // DELETE: api/Sessions/5
-        [ResponseType(typeof(Session))]
-        public async Task<IHttpActionResult> DeleteSession(int id)
+        // DELETE: api/Contexts/5
+        [ResponseType(typeof(Context))]
+        public async Task<IHttpActionResult> DeleteContext(int id)
         {
-            Session session = await db.Sessions.FindAsync(id);
-            if (session == null)
+            Context context = await db.Contexts.FindAsync(id);
+            if (context == null)
             {
                 return NotFound();
             }
 
-            db.Sessions.Remove(session);
+            db.Contexts.Remove(context);
             await db.SaveChangesAsync();
 
-            return Ok(session);
+            return Ok(context);
         }
 
         protected override void Dispose(bool disposing)
@@ -111,9 +111,9 @@ namespace AssessmentsPOC.Controllers
             base.Dispose(disposing);
         }
 
-        private bool SessionExists(int id)
+        private bool ContextExists(int id)
         {
-            return db.Sessions.Count(e => e.Id == id) > 0;
+            return db.Contexts.Count(e => e.Id == id) > 0;
         }
     }
 }

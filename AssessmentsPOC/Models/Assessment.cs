@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -22,11 +23,11 @@ namespace AssessmentsPOC.Models
 
         public double Grade { get; set; }
 
-        [ForeignKey("Session")]
-        public int SessionId { get; set; }
-
-        public virtual Session Session { get; set; }
-
+        [ForeignKey("Context")]
+        public int ContextId { get; set; }
+        [JsonIgnore]
+        public virtual Context Context { get; set; }
+        [JsonIgnore]
         public virtual List<Question> Questions { get; set; }
     }
 }

@@ -15,6 +15,13 @@ namespace AssessmentsPOC
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
+           name: "AssessApi",
+           routeTemplate: "api/Contexts/{contextId}/Assessments/{id}",
+           defaults: new { controller = "Assessments", id = RouteParameter.Optional }
+  );
+         
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }

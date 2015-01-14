@@ -1,4 +1,5 @@
 ﻿
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -21,7 +22,7 @@ namespace AssessmentsPOC.Models
 
         [ForeignKey("Question")]
         public int QuestionId { get; set; }
-
+        [JsonIgnore]
         public virtual Question Question { get; set; }
     }
 }

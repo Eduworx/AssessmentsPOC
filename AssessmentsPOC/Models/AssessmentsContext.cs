@@ -17,7 +17,7 @@ namespace AssessmentsPOC.Models
         {
         }
 
-        public DbSet<Session> Sessions { get; set; }
+        public DbSet<Context> Contexts { get; set; }
 
         public DbSet<Assessment> Assessments { get; set; }
 

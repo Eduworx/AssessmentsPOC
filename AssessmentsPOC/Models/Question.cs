@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -23,9 +24,10 @@ namespace AssessmentsPOC.Models
 
         [ForeignKey("Assessment")]
         public int AssessmentId { get; set; }
+        [JsonIgnore]
         public virtual Assessment Assessment { get; set; }
 
-
+        [JsonIgnore]
         public virtual List<Option> Options { get; set; }
     }
 }
